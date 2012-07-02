@@ -1,0 +1,20 @@
+@(color: Color)
+
+@main("Bravo : étonnant, déroutant") {
+
+    <div class="row">
+        <div class="span6 offset3">
+            <header>
+                <h1>Bravo !</h1>
+            </header>
+
+            <p>La bonne réponse est bien</p>
+            <button class="btn btn-@color.key" type="submit" name="@color.key">@color.name</button>
+
+            <p class="retry">
+                <a href="@routes.Application.index">Nouvelle tentative</a>
+            </p>
+        </div>
+    </div>
+
+}
