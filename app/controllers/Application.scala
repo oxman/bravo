@@ -25,8 +25,10 @@ object Application extends Controller
     }
 
     def result = Action { implicit request =>
-
-        val colorSubmitted = colorForm.bindFromRequest.get
+        val colorSubmitted = colorForm.bindFromRequest.fold(
+            errors => "",
+            color => color
+        )
         val color = Colors.getAll((new Random).nextInt(3))
 
         val good =
