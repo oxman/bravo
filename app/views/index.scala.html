@@ -11,7 +11,7 @@
             <form action="@routes.Application.result">
                 <ul class="colors unstyled">
                 @colors.map { color =>
-                    <li><button class="btn btn-@color.key" type="submit" name="@color.key" value="1">@color.name</button></li>
+                    <li><button class="btn btn-@color.key" type="submit" name="color" value="@color.key">@color.name</button></li>
                 }
                 </ul>
             </form>

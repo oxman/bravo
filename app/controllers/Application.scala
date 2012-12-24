@@ -13,10 +13,8 @@ object Application extends Controller
 {
 
     val colorForm = Form(
-            tuple(
-                "blue"  -> optional(text),
-                "green" -> optional(text),
-                "red"   -> optional(text)
+            single(
+                "color" -> text
             )
         )
 
@@ -28,19 +26,11 @@ object Application extends Controller
 
     def result = Action { implicit request =>
 
-        val (blue, green, red) = colorForm.bindFromRequest.get
+        val colorSubmitted = colorForm.bindFromRequest.get
         val color = Colors.getAll((new Random).nextInt(3))
 
         val good =
-            if ((blue != None && green != None) ||
-                (blue != None && red != None) ||
-                (green != None && red != None)) {
-                false
-            } else if (blue != None && color.key == "blue") {
-                true
-            } else if (green != None && color.key == "green") {
-                true
-            } else if (red != None && color.key == "red") {
+            if (colorSubmitted == color.key) {
                 true
             } else {
                 false
