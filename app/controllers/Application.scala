@@ -32,7 +32,11 @@ object Application extends Controller
         val color = Colors.getAll((new Random).nextInt(3))
 
         val good =
-            if (blue != None && color.key == "blue") {
+            if ((blue != None && green != None) ||
+                (blue != None && red != None) ||
+                (green != None && red != None)) {
+                false
+            } else if (blue != None && color.key == "blue") {
                 true
             } else if (green != None && color.key == "green") {
                 true
