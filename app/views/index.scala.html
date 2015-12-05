@@ -5,11 +5,11 @@
     <div class="row">
         <div class="span6 offset3">
             <header>
-                <h1>Quel est la bonne couleur ?</h1>
+                <h1>Quelle est la bonne couleur ?</h1>
             </header>
 
             <form action="@routes.Application.result">
-                <ul class="colors unstyled">
+                <ul class="colors">
                 @colors.map { color =>
                     <li><button class="btn btn-@color.key" type="submit" name="color" value="@color.key">@color.name</button></li>
                 }
